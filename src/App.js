@@ -1,4 +1,4 @@
-import { useState, Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import { CovalentClient } from "@covalenthq/client-sdk";
 import LoadingSpinner from "./UI/LoadingSpinner";
 import { ethers } from 'ethers';
@@ -12,7 +12,7 @@ function App() {
   const [nativeCurrencyData, setNativeCurrencyData] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const client = new CovalentClient("ckey_c13d0d85e5f640df9de227e9de8");
+  const client = new CovalentClient(process.env.REACT_APP_API_KEY);
 
   const getWalletTokenBalance = async () => {
     try {
@@ -36,7 +36,6 @@ function App() {
     try {
       const resp = await client.BalanceService.getNativeTokenBalance(network, address);
       setNativeCurrencyData(resp.data);
-      console.log(resp.data);
     } catch (error) {
       console.error(error);
     }
