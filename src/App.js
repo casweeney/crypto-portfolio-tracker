@@ -6,7 +6,7 @@ import { ethers } from 'ethers';
 
 function App() {
   const [address, setAddress] = useState("");
-  const [network, setNetwork] = useState("");
+  const [network, setNetwork] = useState("eth-mainnet");
   const [tokenData, setTokenData] = useState(null);
   const [nftData, setNftData] = useState(null);
   const [nativeCurrencyData, setNativeCurrencyData] = useState(null);
@@ -93,7 +93,7 @@ function App() {
               <div className="input-group mb-3 input-group-lg">
                 <input type="text" className="form-control" placeholder="Wallet Address" onChange={addressChangeHandler} />
 
-                <select className="form-control" onChange={networkChangeHandler}>
+                <select className="form-control" value={network} onChange={networkChangeHandler}>
                   <option value="eth-mainnet">Ethereum</option>
                   <option value="bsc-mainnet">Binance</option>
                   <option value="matic-mainnet">Polygon</option>
